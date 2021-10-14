@@ -1,3 +1,4 @@
+import { useSelector, useDispatch } from 'react-redux';
 import {
 	BrowserRouter,
 	Switch,
@@ -6,8 +7,12 @@ import {
 import HomeContainer from './containers/HomeContainer';
 import ProductsContainer from './containers/ProductsContainer';
 import { EcommerceProvider } from './context/EcommerceContext';
+import { addProductCart } from './redux/actions/cart';
 
 function App() {
+	const STATE = useSelector((state) => state.cartReducer);
+	const dispatch = useDispatch();
+	console.log(STATE);
 	return (
 		<div className='App'>
 			<link
@@ -21,6 +26,13 @@ function App() {
 				integrity='sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p'
 				crossOrigin='anonymous'
 			></script>
+			<button
+				onClick={() => {
+					dispatch(addProductCart({ id: 1, name: 'tshirt', price: 3000 }));
+				}}
+			>
+				Agregar al carrito
+			</button>
 
 			<BrowserRouter>
 				<EcommerceProvider>

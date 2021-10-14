@@ -1,5 +1,5 @@
 import CardComponent from '../components/CardComponent';
-import { useEffect, useContext, useState } from 'react';
+import { useEffect, useContext } from 'react';
 import InfoBarComponent from '../components/InfoBarComponent';
 import { EcommerceContext } from '../context/EcommerceContext';
 import { useParams } from 'react-router';
@@ -23,7 +23,7 @@ const ProductsContainer = () => {
 		console.log(carrito);
 	};
 	const handleKeyUp = (e) => {
-		if (e.target.value == []) {
+		if (e.target.value === []) {
 			setProducts(list);
 		}
 		const productsFilter = products.filter((element) => {
